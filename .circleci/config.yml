@@ -41,7 +41,7 @@ jobs:
       - run: npm test
 
       #run code coverage
-      - run: jest --coverage --colors
+      - run: jest --collectCoverage
 
       #deployment
 deploy:
