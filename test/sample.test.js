@@ -3,17 +3,20 @@ const app = require("../server");
 const User = mongoose.model("User");
 const Article = mongoose.model("Article");
 const should = require('should');
+mongoose.Promise = global.Promise;
 
 
-var user
+
 describe("Method Save", function() {
+ 
+  
+  beforeAll(() => {
+  if(mongoose.createConnection(process.env.MONGOHQ_URL)){
+  }
+   
+});
 
-  afterAll(async () => {
-    await connection.close();
-    await db.close();
-  });
-
-  describe("Model User:", function() {
+ 
     it("should be able to save a user without problems", async () => {
       await new User({
         name: "Full name",
@@ -39,7 +42,6 @@ describe("Method Save", function() {
           should.exist(err)
       });
     });
-
     
     it('should be able to show an error when try to save with email not properly formed', async() => { 
    await new User({
@@ -48,12 +50,14 @@ describe("Method Save", function() {
         password: "password",
         username: "tehdydkd"
       }).save(function(err){
-        should.exist(err);
+        expect(err.message).toEqual("Validation failed");
       })
-  });
-  
+
   });
 
+  afterAll((done) => {
+    mongoose.disconnect(done);
+  });
+  });
 
-});
  

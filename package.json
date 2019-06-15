@@ -14,8 +14,8 @@
   },
   "scripts": {
     "start": "node node_modules/grunt-cli/bin/grunt",
-    "test": "jest",
-    "test:coverage": "jest --coverage --colors --forceExit",
+    "test": "jest --forceExit",
+    "test:coverage": "jest --coverage --colors",
     "postinstall": "node node_modules/grunt-cli/bin/grunt install"
   },
   "dependencies": {
