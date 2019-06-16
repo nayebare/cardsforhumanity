@@ -46,7 +46,7 @@ var validatePresenceOf = function(value) {
 
 // the below 4 validations only apply if you are signing up traditionally
 UserSchema.path('name').validate(function(name) {
-    // if you are authenticating by any of the oauth strategies, don't validate
+    // if you are authenticating by any of the oauth strategies, don't validate 
     if (authTypes.indexOf(this.provider) !== -1) return true;
     return name.length;
 }, 'Name cannot be blank');
@@ -85,7 +85,6 @@ UserSchema.path('email').validate(function (email) {
  */
 UserSchema.pre('save', function(next) {
     if (!this.isNew) return next();
-
     if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1)
         next(new Error('Invalid password'));
     else
@@ -124,3 +123,4 @@ UserSchema.methods = {
 };
 
 mongoose.model('User', UserSchema);
+2

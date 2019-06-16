@@ -30,7 +30,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-     # - run: npm install
+     # - run: npm install 
 
       - save_cache:
           paths:
@@ -40,9 +40,12 @@ jobs:
       # run tests!
       - run: npm test
 
-      #run code coverage
-     # - run: jest --collectCoverage
-
+      #run code coverage TODO collect code coverage with circle ci
+    #  - run:
+       #   name: "Run Jest and Collect Coverage Reports"
+    #      command: test  --collectCoverage=true
+    #  - store_artifacts:
+     #     path: coverage
       #deployment
 deploy:
     production: 

@@ -1,22 +1,19 @@
+
+
 const mongoose = require("mongoose");
 const app = require("../server");
 const User = mongoose.model("User");
 const Article = mongoose.model("Article");
 const should = require('should');
-mongoose.Promise = global.Promise;
-
 
 
 describe("Method Save", function() {
- 
-  
   beforeAll(() => {
   if(mongoose.createConnection(process.env.MONGOHQ_URL)){
   }
    
 });
 
- 
     it("should be able to save a user without problems", async () => {
       await new User({
         name: "Full name",
