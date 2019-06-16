@@ -1,9 +1,12 @@
 /**
  * Module dependencies.
  */
+
+
 var mongoose = require('mongoose'),
-  User = mongoose.model('User');
+  User = mongoose.model('User'),
 var avatars = require('./avatars').all();
+
 
 /**
  * Auth callback
@@ -11,6 +14,7 @@ var avatars = require('./avatars').all();
 exports.authCallback = function(req, res, next) {
   res.redirect('/chooseavatars');
 };
+
 
 /**
  * Show login form
@@ -77,34 +81,51 @@ exports.checkAvatar = function(req, res) {
  * Create user
  */
 exports.create = function(req, res) {
+
   if (req.body.name && req.body.password && req.body.email) {
+
+    /*
     User.findOne({
       email: req.body.email
     }).exec(function(err,existingUser) {
-      if (!existingUser) {
+*/
+    
+
+     // if (!existingUser) {
         var user = new User(req.body);
+    
         // Switch the user's avatar index to an actual avatar url
         user.avatar = avatars[user.avatar];
         user.provider = 'local';
-        user.save(function(err) {
-          if (err) {
+       user.save(function(err, response) {
+          if (response) {
+            console.log("tres");
+            /*
             return res.render('/#!/signup?error=unknown', {
               errors: err.errors,
               user: user
             });
+            */
           }
+         
+ 
+          
+          /*
           req.logIn(user, function(err) {
             if (err) return next(err);
             return res.redirect('/#!/');
           });
+          */
         });
-      } else {
-        return res.redirect('/#!/signup?error=existinguser');
-      }
-    });
-  } else {
-    return res.redirect('/#!/signup?error=incomplete');
-  }
+
+      } 
+      //else {
+      //  return res.redirect('/#!/signup?error=existinguser');
+     // }
+    //});
+ // } //else {
+    //return res.redirect('/#!/signup?error=incomplete');
+ // }
 };
 
 /**

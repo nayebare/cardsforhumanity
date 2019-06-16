@@ -12,7 +12,8 @@ var express = require('express'),
     fs = require('fs'),
     passport = require('passport'),
     logger = require('mean-logger'),
-    io = require('socket.io');
+    io = require('socket.io'),
+    Promise = require('es6-promise').Promise;
 
 /**
  * Main application entry file.
@@ -31,7 +32,20 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
  * @returns configuration mongodb url
  */
 
-var db = mongoose.connect(config.db);
+//var db = mongoose.connect(config.db);
+//TO DO findout why the connection is not returning a result
+return new Promise (function (resolve, reject){
+    mongoose.connect(config.db, function(err, result){
+        if(err){
+            console.log("error")
+        }
+        else{
+            console.log("working")
+        }
+    })
+})
+
+
 
 //Bootstrap models
 var models_path = __dirname + '/app/models';

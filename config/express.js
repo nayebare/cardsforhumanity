@@ -41,6 +41,8 @@ module.exports = function(app, passport, mongoose) {
         //bodyParser should be above methodOverride
         app.use(express.bodyParser());
         app.use(express.methodOverride());
+        app.use(express.urlencoded());
+        app.use(express.json());
 
         //express/mongo session storage
         app.use(express.session({

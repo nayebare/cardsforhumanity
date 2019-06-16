@@ -5,9 +5,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcryptjs'),
     _ = require('underscore'),
+
     authTypes = ['github', 'twitter', 'facebook', 'google'];
 
-
+   
 /**
  * User Schema
  */
@@ -83,15 +84,15 @@ UserSchema.path('email').validate(function (email) {
 /**
  * Pre-save hook
  */
+/*
 UserSchema.pre('save', function(next) {
     if (!this.isNew) return next();
-
     if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1)
         next(new Error('Invalid password'));
     else
         next();
 });
-
+*/
 /**
  * Methods
  */
@@ -124,3 +125,5 @@ UserSchema.methods = {
 };
 
 mongoose.model('User', UserSchema);
+
+
