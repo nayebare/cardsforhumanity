@@ -29,7 +29,7 @@ describe("Method Save User", function() {
       password: "password",
       username: ""
     }).save(function(error){
-        expect(err.message).toEqual("Validation failed"); 
+        expect(error.message).toEqual("Validation failed"); 
     })
 });
 
