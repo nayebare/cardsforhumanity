@@ -5,7 +5,6 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcryptjs'),
     _ = require('underscore'),
-
     authTypes = ['github', 'twitter', 'facebook', 'google'];
 
    

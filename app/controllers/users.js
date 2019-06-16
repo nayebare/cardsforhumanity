@@ -5,7 +5,7 @@
 
 var mongoose = require('mongoose'),
   User = mongoose.model('User'),
-var avatars = require('./avatars').all();
+  avatars = require('./avatars').all();
 
 
 /**

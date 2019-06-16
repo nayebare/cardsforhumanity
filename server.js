@@ -34,6 +34,7 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
 
 //var db = mongoose.connect(config.db);
 //TO DO findout why the connection is not returning a result
+/*
 return new Promise (function (resolve, reject){
     mongoose.connect(config.db, function(err, result){
         if(err){
@@ -44,7 +45,7 @@ return new Promise (function (resolve, reject){
         }
     })
 })
-
+*/
 
 
 //Bootstrap models
