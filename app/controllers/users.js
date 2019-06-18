@@ -107,8 +107,7 @@ exports.create = function(req, res) {
             });
             */
           }
-         
- 
+        
           
           /*
           req.logIn(user, function(err) {
