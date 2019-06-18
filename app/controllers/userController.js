@@ -14,7 +14,7 @@ exports.create = async function(req, res) {
             console.log("tres");
           }
           else{
-              console.log(error)
+              console.log(error);
           }
   
         });
